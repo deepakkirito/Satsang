@@ -1,0 +1,10 @@
+.post {
+    margin: auto;
+}
+.post h1 {
+    text-align: center;
+}
+.post img {
+    display: block;
+    margin: auto;
+}

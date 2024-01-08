@@ -1,0 +1,71 @@
+.table section:nth-of-type(1) {
+    display: flex;
+    align-items: center;
+    width: 90vw;
+    margin: auto;
+    margin-top: 5%;
+}
+
+.table section:nth-of-type(1) input {
+    width: 80vw;
+    padding: 1rem;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.741);
+    margin-bottom: 0;
+}
+
+.table section:nth-of-type(1) img {
+    background-color: rgba(255, 255, 255, 0.741);
+    border-radius: 5px;
+    margin-left: 5%;
+}
+
+.table section:nth-of-type(1) input::placeholder {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.table section:nth-of-type(2) {
+    width: 100vw;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.table table {
+    width: 90vw;
+    margin: auto;
+    font-size: 10px;
+    border-radius: 5px;
+    border-collapse: collapse;
+    border-spacing: 10px;
+}
+
+.table thead {
+    background-color: rgba(255, 255, 255, 0.741);
+}
+
+.table tbody tr {
+    background-color: whitesmoke;
+    border: none;
+}
+
+.table td {
+    padding: 0.5rem;
+}
+
+.table td:nth-last-of-type(5) {
+    border-radius: 5px 0 0 5px;
+}
+
+.table td:nth-last-of-type(1) {
+    border-radius: 0 5px 5px 0px;
+}
+
+.table tr button {
+    padding: 0.5rem;
+    font-size: 10px;
+    margin-bottom: 0;
+}
