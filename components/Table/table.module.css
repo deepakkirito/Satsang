@@ -90,8 +90,8 @@
         font-size: 12px;
     }
 
-    /* .table section:nth-of-type(1) img {
+    .table section:nth-of-type(1) img {
         width: fit-content;
-        height: 2.25rem;
-    } */
+        height: 1.85rem;
+    }
 }
