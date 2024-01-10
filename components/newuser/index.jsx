@@ -111,7 +111,7 @@ const newuser = () => {
         <div>
           <label>Profile Pic</label>
           {userData?.Pic && <img src={userData.Pic} alt='Profile'></img>}
-          <input type='file' name='Pic'></input>
+          <input type='file' name='Pic' accept="image/*"></input>
         </div>
         <div>
           <label>Name</label>
