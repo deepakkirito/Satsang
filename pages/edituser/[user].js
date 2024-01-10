@@ -112,8 +112,8 @@ const user = () => {
       <form onSubmit={e => e.preventDefault()} onChange={e => handleChange(e.target)}>
         {update && userData && userData?.Pic && <div>
           <h5>Pic : </h5>
-          <img src={userData.Pic} alt='Profile' accept="image/*"></img>
-          <input type='file' placeholder='Upload Profile Pic' name='Pic'></input>
+          <img src={userData.Pic} alt='Profile'></img>
+          <input type='file' placeholder='Upload Profile Pic' name='Pic' accept="image/*"></input>
         </div>}
         {update && userData ? Object.keys(userData).map((data, index) => {
           if (data != 'Pic' && data == 'Dob' || data == 'Date_of_initiation') {
