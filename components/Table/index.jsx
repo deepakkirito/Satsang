@@ -64,7 +64,7 @@ const table = () => {
         <div className={styles.table}>
             <section>
                 <input type='search' placeholder='Search' onChange={e => setSearchData(e.target.value)}></input>
-                <Images src='/Right Arrow.gif' width='40' height='30' alt='Loading' onClick={handleSearch}></Images>
+                <Images src='/Right Arrow.gif' width='50' height='50' alt='Loading' onClick={handleSearch}></Images>
             </section>
             <section>
                 <table>
