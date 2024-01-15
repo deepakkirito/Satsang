@@ -65,7 +65,6 @@ const user = () => {
       userData.Pic = b64fileP;
       setUserData({ ...userData, [data.name]: userData.Pic })
     } else if (data.name == 'Aadhaar') {
-      console.log(data.value);
       if (data.value.length > 12) {
         setCheck('false')
         setTimeout(() => {
@@ -77,7 +76,7 @@ const user = () => {
       } else {
         setUserData({ ...userData, [data.name]: data.value })
       }
-    } else if (data.name == 'Contact_no_2' || data == 'Contact_no_1' || data.name == 'Emergency_number') {
+    } else if (data.name == 'Contact_no_2' || data.name == 'Contact_no_1' || data.name == 'Emergency_number') {
       if (data.value.length > 10) {
         setCheck('false')
         setTimeout(() => {
@@ -112,8 +111,8 @@ const user = () => {
       <form onSubmit={e => e.preventDefault()} onChange={e => handleChange(e.target)}>
         {update && userData && userData?.Pic && <div>
           <h5>Pic : </h5>
-          <img src={userData.Pic} alt='Profile'></img>
-          <input type='file' placeholder='Upload Profile Pic' name='Pic' accept="image/*"></input>
+          <img src={userData.Pic} alt='Profile' accept="image/*"></img>
+          <input type='file' placeholder='Upload Profile Pic' name='Pic'></input>
         </div>}
         {update && userData ? Object.keys(userData).map((data, index) => {
           if (data != 'Pic' && data == 'Dob' || data == 'Date_of_initiation') {
