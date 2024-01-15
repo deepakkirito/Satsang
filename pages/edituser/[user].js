@@ -11,6 +11,7 @@ import { Message_data } from "../../context/context";
 
 const user = () => {
   const [userData, setUserData] = useState(undefined)
+  const [newUserData, setNewUserData] = useState({})
   const { message, setMessage } = useContext(Message_data);
   const [messag, setMessag] = useState('');
   const [color, setColor] = useState('green');
@@ -33,14 +34,11 @@ const user = () => {
 
   const handleClick = () => {
     setUpdate(false)
-    axios.put(`https://satsangapi.glitch.me/user?id=${user}`, { userData: userData }).then(res => {
-      console.log(res.data.res);
-      // setMessage({ ...message, back: false })
+    axios.put(`https://satsangapi.glitch.me/user?id=${user}`, { userData: newUserData }).then(res => {
       setUpdate(true)
       setCheck('false')
       setTimeout(() => {
         setCheck('true')
-        // window.location.reload()
       }, 5000);
       setMessag('Data Updated Successfully')
       setBgcolor('#dff2bf')
@@ -50,7 +48,6 @@ const user = () => {
       setUpdate(true)
       setTimeout(() => {
         setCheck('true')
-        // window.location.reload()
       }, 5000);
       setMessag('Try again later!!!')
       setBgcolor('#ffbaba')
@@ -62,8 +59,8 @@ const user = () => {
   const handleChange = async (data) => {
     if (data.name == 'Pic') {
       let b64fileP = await toBase64(data.files[0]);
-      userData.Pic = b64fileP;
-      setUserData({ ...userData, [data.name]: userData.Pic })
+      newUserData.Pic = b64fileP;
+      setNewUserData({ ...newUserData, [data.name]: newUserData.Pic })
     } else if (data.name == 'Aadhaar') {
       if (data.value.length > 12) {
         setCheck('false')
@@ -74,7 +71,7 @@ const user = () => {
         setBgcolor('#ffbaba')
         setColor('rgba(114, 15, 15, 0.575)')
       } else {
-        setUserData({ ...userData, [data.name]: data.value })
+        setNewUserData({ ...newUserData, [data.name]: data.value })
       }
     } else if (data.name == 'Contact_no_2' || data.name == 'Contact_no_1' || data.name == 'Emergency_number') {
       if (data.value.length > 10) {
@@ -86,9 +83,10 @@ const user = () => {
         setBgcolor('#ffbaba')
         setColor('rgba(114, 15, 15, 0.575)')
       } else {
-        setUserData({ ...userData, [data.name]: data.value })
+        setNewUserData({ ...newUserData, [data.name]: data.value })
       }
     } else {
+      setNewUserData({ ...newUserData, [data.name]: data.value })
       setUserData({ ...userData, [data.name]: data.value })
     }
   }
