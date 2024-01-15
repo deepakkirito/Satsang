@@ -35,7 +35,7 @@ code {
 .toast {
   background-color: #FFBABA;
   width: 90vw;
-  margin-top: 2vh;
+  margin-top: 2vh !important;
   border-radius: 10px;
   padding: 0.5rem;
   border: 2px solid rgba(114, 15, 15, 0.575);
