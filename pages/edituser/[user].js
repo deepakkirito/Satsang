@@ -10,7 +10,25 @@ import { Message_data } from "../../context/context";
 
 
 const user = () => {
-  const [userData, setUserData] = useState(undefined)
+  const [userData, setUserData] = useState({
+    Pic: "",
+    Name: "",
+    Badge_ID: "",
+    Father_husband: "",
+    Aadhaar: "",
+    Gender: "",
+    Age: "",
+    Dob: "",
+    Contact_no_1: "",
+    Contact_no_2: "",
+    Emergency_number: "",
+    Current_address: "",
+    Status: "",
+    In_active: "",
+    Date_of_initiation: "",
+    Area_location: "",
+    Satsang_place: ""
+})
   const [newUserData, setNewUserData] = useState({})
   const { message, setMessage } = useContext(Message_data);
   const [messag, setMessag] = useState('');
@@ -24,13 +42,32 @@ const user = () => {
 
   useEffect(() => {
     user && axios.get(`https://satsangapi.glitch.me/userbyid?id=${user}`).then(res => {
-      const data = res.data.res[0]
-      !data?.Pic ? data.Pic = 'https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg' : ''
-      setUserData(res.data.res[0])
+      const userData = res.data.res[0]
+      !userData?.Pic ? userData.Pic = 'https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg' : ''
+      setUserData({...userData, 
+        Pic: !userData?.Pic ? userData.Pic = 'https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg' : userData?.Pic,
+        Name: userData?.Name,
+        Badge_ID: userData?.Badge_ID,
+        Father_husband: userData?.Father_husband,
+        Aadhaar: userData?.Aadhaar,
+        Gender: userData?.Gender,
+        Age: userData?.Age,
+        Dob: userData?.Dob,
+        Contact_no_1: userData?.Contact_no_1,
+        Contact_no_2: userData?.Contact_no_2,
+        Emergency_number: userData?.Emergency_number,
+        Current_address: userData?.Current_address,
+        Status: userData?.Status,
+        In_active: userData?.In_active,
+        Date_of_initiation: userData?.Date_of_initiation,
+        Area_location: userData?.Area_location,
+        Satsang_place: userData?.Satsang_place
+    })
     }).catch(err => {
       console.log(err);
     })
   }, [user])
+  console.log(userData);
 
   const handleClick = () => {
     setUpdate(false)
