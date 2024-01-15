@@ -38,3 +38,7 @@
     border-radius: 5px;
     background-color: rgba(245, 222, 179, 0.297);
 }
+
+.user a {
+    border: 1px solid white;
+}
