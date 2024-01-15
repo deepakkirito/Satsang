@@ -10,25 +10,7 @@ import { Message_data } from "../../context/context";
 
 
 const user = () => {
-  const [userData, setUserData] = useState({
-    Pic: "",
-    Name: "",
-    Badge_ID: "",
-    Father_husband: "",
-    Aadhaar: "",
-    Gender: "",
-    Age: "",
-    Dob: "",
-    Contact_no_1: "",
-    Contact_no_2: "",
-    Emergency_number: "",
-    Current_address: "",
-    Status: "",
-    In_active: "",
-    Date_of_initiation: "",
-    Area_location: "",
-    Satsang_place: ""
-})
+  const [userData, setUserData] = useState(undefined)
   const [newUserData, setNewUserData] = useState({})
   const { message, setMessage } = useContext(Message_data);
   const [messag, setMessag] = useState('');
