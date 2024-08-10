@@ -124,11 +124,21 @@ const View = ({ id = "" }) => {
                   padding: "0.5rem",
                 }}
               >
-                <Typography>
+                <Typography
+                  sx={{
+                    fontSize: "12px",
+                  }}
+                >
                   {data.split("_").map((item) => `${item} `)}:-
                 </Typography>
 
-                <Typography>{Object.values(userData)[index] || "-"}</Typography>
+                <Typography
+                  sx={{
+                    fontSize: "12px",
+                  }}
+                >
+                  {Object.values(userData)[index] || "-"}
+                </Typography>
               </Box>
             );
           })
