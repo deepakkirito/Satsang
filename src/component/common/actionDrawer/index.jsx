@@ -16,6 +16,7 @@ const ActionDrawer = ({ options = [] }) => {
         display: "flex",
         gap: "1rem",
         flexWrap: "nowrap",
+        justifyContent: "space-between"
       }}
     >
       {options?.length &&
@@ -28,6 +29,7 @@ const ActionDrawer = ({ options = [] }) => {
                 borderRadius: "1rem",
                 backgroundColor: activeColor,
                 color: foregroundColor,
+                fontSize: "12px"
               }}
               disabled={disabled}
             >
