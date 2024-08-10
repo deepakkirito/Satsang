@@ -11,10 +11,10 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   bgcolor: foregroundColor,
-  border: "2px solid #000",
   boxShadow: 24,
   width: "85vw",
   padding: "1rem",
+  borderRadius: "0.5rem",
   p: {
     color: textColor,
     fontSize: "12px",
