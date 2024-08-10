@@ -48,6 +48,7 @@ const AlertBox = () => {
       sx={{
         position: "fixed",
         top: "6rem",
+        zIndex: "10",
         right:
           message?.alert?.length && message?.alert[0].content !== ""
             ? "0"
