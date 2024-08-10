@@ -1,0 +1,13 @@
+{
+    "theme_color": "#10131a",
+    "background_color": "#c5e2ff",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "name": "Sevadaar Data",
+    "short_name": "Sevadaar Data",
+    "description": "A data record application for Satsang",
+    "icons": [
+      { "src": "/favicon.jpg", "sizes": "512x512", "type": "image/jpg" }
+    ]
+  }
