@@ -201,6 +201,7 @@ const NewSevadaar = ({ id }) => {
           backgroundColor: foregroundColor,
           display: "flex",
           gap: "1rem",
+          padding: "1rem",
           flexWrap: "wrap",
           margin: "1rem",
           borderRadius: "0.5rem",
@@ -212,7 +213,7 @@ const NewSevadaar = ({ id }) => {
               borderColor: textColor,
             },
             "& .MuiInputBase-input": {
-              width: { xs: "85vw" },
+              width: { xs: "80vw" },
               color: textColor,
             },
           },
