@@ -213,7 +213,7 @@ const NewSevadaar = ({ id }) => {
               borderColor: textColor,
             },
             "& .MuiInputBase-input": {
-              width: { xs: "80vw" },
+              width: { xs: "75vw" },
               color: textColor,
             },
           },
