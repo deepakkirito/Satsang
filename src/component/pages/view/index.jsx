@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import LoadingIcon from "@/component/assets/icons/gif/loading.gif";
 import Image from "next/image";
 import { foregroundColor, textColor } from "@/component/assets/css";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const { Box, Typography, Button } = require("@mui/material");
 
@@ -14,6 +14,7 @@ const View = ({ id = "" }) => {
   const [userData, setUserData] = useState({});
   const [imageData, setImageData] = useState("loading");
   const router = useRouter();
+  const location = usePathname();
 
   useEffect(() => {
     setImgLoading(true);
@@ -97,12 +98,27 @@ const View = ({ id = "" }) => {
             Loading Image...
           </>
         )}
-        <Button variant="contained" onClick={() => router.push("/edit/" + id)}>
-          Edit
-        </Button>
-        <Button variant="contained" onClick={() => handleDelete()}>
-          Delete
-        </Button>
+        {!location.includes("share") && (
+          <Button
+            variant="contained"
+            onClick={() => router.push("/edit/" + id)}
+          >
+            Edit
+          </Button>
+        )}
+        {!location.includes("share") && (
+          <Button variant="contained" onClick={() => handleDelete()}>
+            Delete
+          </Button>
+        )}
+        {location.includes("share") && (
+          <Button
+            variant="contained"
+            onClick={() => router.push(localStorage.getItem("share"))}
+          >
+            Back
+          </Button>
+        )}
       </Box>
       <Box
         sx={{
