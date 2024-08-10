@@ -15,7 +15,7 @@ const ActionDrawer = ({ options = [] }) => {
         margin: "1rem",
         display: "flex",
         gap: "1rem",
-        flexWrap: "nowrap",
+        flexWrap: "wrap",
         justifyContent: "space-between"
       }}
     >
