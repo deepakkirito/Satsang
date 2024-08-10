@@ -12,6 +12,18 @@ import LoadingIcon from "@/component/assets/icons/gif/loading.gif";
 import Image from "next/image";
 import PopupModal from "@/component/common/popupModal";
 import copy from "clipboard-copy";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  PinterestShareButton,
+  PinterestIcon,
+  RedditShareButton,
+  RedditIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+} from "next-share";
 
 const {
   Box,
@@ -285,15 +297,61 @@ const Dashboard = () => {
               display: "flex",
               gap: "1rem",
               alignItems: "center",
+              justifyContent: "space-between"
             }}
           >
             <IconButton onClick={handleCopyClick}>
               <CopyAll />
             </IconButton>
-            <Typography>{isCopied ? "Copied" : "Copy to Clipboard"}</Typography>
-            <Button onClick={() => router.push(`/share/${shareId}`)}>
+            <Typography
+              sx={{
+                fontSize: "12px",
+              }}
+            >
+              {isCopied ? "Copied" : "Copy to Clipboard"}
+            </Typography>
+            <Button
+            variant="contained"
+              onClick={() => router.push(`/share/${shareId}`)}
+              sx={{
+                fontSize: "12px",
+              }}
+            >
               Go to Share Page
             </Button>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginTop: "1rem",
+            }}
+          >
+            <FacebookShareButton
+              url={`https://www.radhaaswami.vercel.app/share/${shareId}`}
+            >
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <PinterestShareButton
+              url={`https://www.radhaaswami.vercel.app/share/${shareId}`}
+            >
+              <PinterestIcon size={32} round />
+            </PinterestShareButton>
+            <RedditShareButton
+              url={`https://www.radhaaswami.vercel.app/share/${shareId}`}
+            >
+              <RedditIcon size={32} round />
+            </RedditShareButton>
+            <WhatsappShareButton
+              url={`https://www.radhaaswami.vercel.app/share/${shareId}`}
+            >
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+            <LinkedinShareButton
+              url={`https://www.radhaaswami.vercel.app/share/${shareId}`}
+            >
+              <LinkedinIcon size={32} round />
+            </LinkedinShareButton>
           </Box>
         </Box>
       </PopupModal>
