@@ -51,7 +51,7 @@ const Dashboard = () => {
 
   const handleCopyClick = async () => {
     try {
-      await copy("https://www.radhaaswami.vercel.app/share/" + shareId);
+      await copy("https://radhaaswami.vercel.app/share/" + shareId);
       setIsCopied(true);
     } catch (error) {
       console.error("Failed to copy text to clipboard", error);
@@ -290,7 +290,7 @@ const Dashboard = () => {
               margin: "1rem 0",
             }}
           >
-            https://www.radhaaswami.vercel.app/share/{shareId}
+            https://radhaaswami.vercel.app/share/{shareId}
           </Typography>
           <Box
             sx={{
@@ -328,27 +328,27 @@ const Dashboard = () => {
             }}
           >
             <FacebookShareButton
-              url={`https://www.radhaaswami.vercel.app/share/${shareId}`}
+              url={`https://radhaaswami.vercel.app/share/${shareId}`}
             >
               <FacebookIcon size={32} round />
             </FacebookShareButton>
             <PinterestShareButton
-              url={`https://www.radhaaswami.vercel.app/share/${shareId}`}
+              url={`https://radhaaswami.vercel.app/share/${shareId}`}
             >
               <PinterestIcon size={32} round />
             </PinterestShareButton>
             <RedditShareButton
-              url={`https://www.radhaaswami.vercel.app/share/${shareId}`}
+              url={`https://radhaaswami.vercel.app/share/${shareId}`}
             >
               <RedditIcon size={32} round />
             </RedditShareButton>
             <WhatsappShareButton
-              url={`https://www.radhaaswami.vercel.app/share/${shareId}`}
+              url={`https://radhaaswami.vercel.app/share/${shareId}`}
             >
               <WhatsappIcon size={32} round />
             </WhatsappShareButton>
             <LinkedinShareButton
-              url={`https://www.radhaaswami.vercel.app/share/${shareId}`}
+              url={`https://radhaaswami.vercel.app/share/${shareId}`}
             >
               <LinkedinIcon size={32} round />
             </LinkedinShareButton>
