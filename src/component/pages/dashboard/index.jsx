@@ -1,7 +1,7 @@
 "use client";
 import ActionDrawer from "@/component/common/actionDrawer";
 import CustomTable from "@/component/common/table";
-import { Delete, Edit, ViewComfy } from "@mui/icons-material";
+import { CopyAll, Delete, Edit, ViewComfy } from "@mui/icons-material";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
@@ -10,8 +10,17 @@ import { Message_data } from "@/lib/context";
 import { useContext } from "react";
 import LoadingIcon from "@/component/assets/icons/gif/loading.gif";
 import Image from "next/image";
+import PopupModal from "@/component/common/popupModal";
+import copy from "clipboard-copy";
 
-const { Box, MenuItem, ListItemIcon } = require("@mui/material");
+const {
+  Box,
+  MenuItem,
+  ListItemIcon,
+  Typography,
+  IconButton,
+  Button,
+} = require("@mui/material");
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
@@ -19,11 +28,23 @@ const Dashboard = () => {
   const [rowSelection, setRowSelection] = useState({});
   const { message, setMessage } = useContext(Message_data);
   const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [shareId, setShareId] = useState("");
+  const [isCopied, setIsCopied] = useState(false);
 
   const csvConfig = mkConfig({
     useKeysAsHeaders: true,
     filename: "Sevadaar Data",
   });
+
+  const handleCopyClick = async () => {
+    try {
+      await copy("https://www.radhaaswami.vercel.app/share/" + shareId);
+      setIsCopied(true);
+    } catch (error) {
+      console.error("Failed to copy text to clipboard", error);
+    }
+  };
 
   const handleExport = () => {
     const temp = data.filter((item) => {
@@ -61,6 +82,39 @@ const Dashboard = () => {
       })
       .catch((err) => {
         window.location.reload();
+      });
+  };
+
+  const handleShare = () => {
+    setIsCopied(false);
+    axios
+      .post("https://satsangapi.glitch.me/share", {
+        userData: { share: Object.keys(rowSelection) },
+      })
+      .then((res, err) => {
+        setShareId(`${res.data.res._id}`);
+        setMessage({
+          ...message,
+          alert: [
+            {
+              type: "success",
+              content: "Link created Successfully",
+            },
+          ],
+        });
+        setOpen(true);
+      })
+      .catch((err) => {
+        setMessage({
+          ...message,
+          alert: [
+            {
+              type: "error",
+              content: "Something went wrong. Try again!!!",
+            },
+          ],
+        });
+        setLoading(false);
       });
   };
 
@@ -174,11 +228,11 @@ const Dashboard = () => {
               disabled: !Object.keys(rowSelection)?.length,
             },
             { name: "Export All", action: handleExportAll },
-            // {
-            //   name: "Share List",
-            //   action: handleExport,
-            //   disabled: !Object.keys(rowSelection)?.length,
-            // },
+            {
+              name: "Share List",
+              action: handleShare,
+              disabled: !Object.keys(rowSelection)?.length,
+            },
             {
               name: "Delete",
               action: handleDelete,
@@ -202,6 +256,47 @@ const Dashboard = () => {
           />
         )}
       </Box>
+      <PopupModal
+        openModal={open}
+        handleOpenModal={(val) => setOpen(val)}
+        title={"Share link has been created"}
+        content={"You can copy or share the link directly."}
+      >
+        <Box
+          sx={{
+            dispaly: "flex",
+            gap: "1rem",
+          }}
+        >
+          <Typography
+            fontSize={"12px"}
+            sx={{
+              wordBreak: "break-all",
+              bgcolor: "whitesmoke",
+              padding: "0.5rem",
+              borderRadius: "0.5rem",
+              margin: "1rem 0",
+            }}
+          >
+            https://www.radhaaswami.vercel.app/share/{shareId}
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "1rem",
+              alignItems: "center",
+            }}
+          >
+            <IconButton onClick={handleCopyClick}>
+              <CopyAll />
+            </IconButton>
+            <Typography>{isCopied ? "Copied" : "Copy to Clipboard"}</Typography>
+            <Button onClick={() => router.push(`/share/${shareId}`)}>
+              Go to Share Page
+            </Button>
+          </Box>
+        </Box>
+      </PopupModal>
     </Box>
   );
 };
