@@ -47,16 +47,18 @@ const Navbar = () => {
         top: "0rem",
         width: "100vw",
         zIndex: "10",
+        paddingRight: "1rem"
       }}
     >
       <Box
         sx={{
           display: "flex",
           section: {
-            padding: "2rem 1rem",
+            padding: "1.5rem 1rem",
             cursor: "pointer",
             borderRight: "0.5px solid",
             borderColor: activeColor,
+            fontSize: "12px"
           },
         }}
       >
@@ -99,6 +101,7 @@ const Navbar = () => {
         variant="contained"
           sx={{
             color: textColor,
+            fontSize: "12px"
           }}
           onClick={handleLogout}
         >
