@@ -82,6 +82,7 @@ const CustomTable = ({ columns, data, tableOptions }) => {
         fontWeight: "normal",
         backgroundColor: "#c5e2ff",
         color: textColor,
+        fontSize: "12px"
       },
     },
     muiTableBodyCellProps: {
@@ -89,11 +90,13 @@ const CustomTable = ({ columns, data, tableOptions }) => {
         border: `1px solid ${foregroundColor}`,
         backgroundColor: "#f8fbff",
         color: textColor,
+        fontSize: "12px"
       },
     },
     muiSearchTextFieldProps: {
       sx: {
         backgroundColor: "#f8fbff",
+        fontSize: "12px"
       },
     },
     ...tableOptions
