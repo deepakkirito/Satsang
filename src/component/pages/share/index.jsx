@@ -62,6 +62,7 @@ const Share = ({ id }) => {
   }, []);
 
   const tableOptions = {
+    enableRowSelection: false,
     renderRowActionMenuItems: ({ closeMenu, row }) => [
       <MenuItem
         key={0}
