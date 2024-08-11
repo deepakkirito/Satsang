@@ -44,6 +44,11 @@ const NewSevadaar = ({ id }) => {
       reader.onerror = (error) => reject(error);
     });
 
+  useEffect(() => {
+    const currentDate = new Date().getFullYear();
+    setUserData({ ...userData, Age: currentDate - userData["Dob"].split("-")[0] });
+  }, [userData["Dob"]]);
+
   const handleAdd = async () => {
     setLoading(true);
     const alert = [];
@@ -157,7 +162,7 @@ const NewSevadaar = ({ id }) => {
           console.log(err);
           setLoadingData(false);
         });
-        !id && setLoadingData(false);
+    !id && setLoadingData(false);
   }, [id]);
 
   const handleUpdate = () => {
@@ -213,7 +218,7 @@ const NewSevadaar = ({ id }) => {
               borderColor: textColor,
             },
             "& .MuiInputBase-input": {
-              width: { xs: "75vw" },
+              width: { xs: "80vw" },
               color: textColor,
             },
           },
@@ -224,7 +229,9 @@ const NewSevadaar = ({ id }) => {
             if (item === "Pic") {
               return (
                 <Box>
-                  <Typography variant="h5" color={textColor}>Profile Pic</Typography>
+                  <Typography variant="h5" color={textColor}>
+                    Profile Pic
+                  </Typography>
                   {userData?.Pic && (
                     <img
                       src={userData.Pic}
@@ -244,10 +251,23 @@ const NewSevadaar = ({ id }) => {
                       handleChange({ name: item, value: event.target.files[0] })
                     }
                     style={{
-                        color: textColor
+                      color: textColor,
                     }}
                   ></input>
                 </Box>
+              );
+            }
+            if (item === "Date_of_initiation" || item == "Dob") {
+              return (
+                <TextField
+                  type="date"
+                  label={item.split("_").map((data) => `${data} `)}
+                  InputLabelProps={{ shrink: true }}
+                  value={userData[item].split("T")[0]}
+                  onChange={(event) =>
+                    handleChange({ name: item, value: event.target.value })
+                  }
+                />
               );
             } else {
               return (
@@ -261,6 +281,7 @@ const NewSevadaar = ({ id }) => {
                     onChange={(event) =>
                       handleChange({ name: item, value: event.target.value })
                     }
+                    disabled={item === "Age"}
                   />
                 </Box>
               );
